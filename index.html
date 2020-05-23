@@ -19,27 +19,32 @@
             <div class="card-body">
                 <form  id="loginPanelForm">
                     
-                        <div id="nickName">
+                        <div id="nickName" class="control">
                         <label >Nickname</label>
                         <input id="formNickname" type="text" class="form-control" placeholder="Please enter your nickname">
+                        <small >Error Message</small>
+
                         </div>  
                         
-                        <div id="mail">
+                        <div id="mail" class="control">
                             <label class="mt-3">Mail</label>
                             <input id="formMail" type="email" class="form-control" placeholder="Please enter your e-mail" >
+                            <small>Error Message</small>
                         </div>
 
-                        <div id="password">
+                        <div id="password" class="control">
                             <label class="mt-3">Password</label>
                             <input id="formPass" type="password" class="form-control" placeholder="Please enter your password" >
+                            <small>Error Message</small>
                         </div>
 
                         <label class="mt-3">Gender</label>
-                        <div class="input-group">
+                        <div class="input-group" class="control">
                             <label>Female</label>
-                                <input type="radio"  class="mt-2 ml-2">
-                            <label class="ml-3">Male</label>
-                                <input type="radio" class="mt-2 ml-2">
+                                <input type="radio" name="gender" class="mt-2 ml-2">
+                            <label class="ml-3" >Male</label>
+                                <input type="radio" name="gender" class="mt-2 ml-2">
+                                <small>Error Message</small>
                         </div>
                         <input type="submit" class="btn btn-primary" id="btnSubmit" value="Gönder">
                 </form>

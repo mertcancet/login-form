@@ -1,11 +1,12 @@
 
 const form =document.querySelector('form');
-const nick=document.querySelector('#formNickname');
-const nickname=document.querySelector('#nickName')
-const mail = document.querySelector('#mail');
-const formMail =document.querySelector('#formMail');
-const password =document.querySelector('#password');
-const formPass =document.querySelector('#formPass');
+const nick=document.getElementById('formNickname');
+const nickname=document.getElementById('nickName')
+const mail = document.getElementById('mail');
+const formMail =document.getElementById('formMail');
+const password =document.getElementById('password');
+const formPass =document.getElementById('formPass');
+
 
 eventListener();
 
@@ -15,45 +16,50 @@ function eventListener(){
 
 function submitForm(e){
     
-    var bayrak='0';
 
-    
-    console.log(nick.value);
+   
 
-    if(nick.value===''&& bayrak === '0' ){
-        const labelNick= document.createElement('label');
-        labelNick.textContent="*Lütfen nickname giriniz";
-        labelNick.classList='text-danger mt-2 ';
-        labelNick.id='danger';
-        nickname.appendChild(labelNick);
-        bayrak='1';
-        console.log(bayrak)
-    }else if(nick.value!==''){
-        labelNick.remove(); 
-       
+
+
+    if(nick.value==='' ){
+        
+        setError(nickname,'*Username boş bırakılamaz')
+    }else {
+       setSuccess(nickname)
     }
     if(formMail.value===''){
-       const labelMail = document.createElement('label');
-       labelMail.textContent='*Mail alanı boş bırakılamaz.';
-       labelMail.classList='text-danger mt-2 ';
-       labelMail.id='danger';
-       mail.appendChild(labelMail);
-    }else if (formMail!==''){
-        labelMail.remove();
+      setError(mail,'*Mail alanı boş bırakılamaz')
+    }else{
+        setSuccess(mail)
     }
 
-    if(formPass.value.length<7){
-        const labelPass = document.createElement('label');
-        labelPass.textContent='*Şifre en az 6 karekterli olmalıdır.';
-        labelPass.classList='text-danger mt-2 ';;
-        labelPass.id='danger';
-        password.appendChild(labelPass);
-    }else if(formPass.value.length>6){
-        labelPass.remove();
+    if(formPass.value===''){
+        setError(password,'*Şifre alanı boş bırakılamaz')
+
+    }else if(formPass.value.length<=6 && formPass.value!=''){
+        setError(password,'*Şifre 6 karekterden fazla olmak zorundadır')
+    }else{
+        setSuccess(password)
     }
 
 
 
 
     e.preventDefault();
+}
+
+function setError(input,message){
+   console.log(input)
+    const formControl = input
+	const small = formControl.querySelector('small');
+	small.className = 'error';
+    small.innerText = message;
+    console.log(formControl)
+    console.log(small)
+}
+
+function setSuccess(input){
+    const formControl=input
+    const small = formControl.querySelector('small')
+    small.className='success'
 }
